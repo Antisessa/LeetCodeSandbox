@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class LongestSubstringWithoutRepeating {
     public static void main(String[] args) {
-        String s = "aab";
+        String s = "abcabcbb";
         // substring 'abc' hasn't repeat char, and answer is 3, bc length is 3
 
         ArrayList sequence = new ArrayList();
@@ -28,7 +28,7 @@ public class LongestSubstringWithoutRepeating {
                     }
                 } else {
                     if (!set.add(s.charAt(j))) {
-                        sequence.add(i);
+                        sequence.add(j);
                         break;
                     }
                 }
@@ -49,6 +49,7 @@ public class LongestSubstringWithoutRepeating {
 
         } else {
                 res = 1;
+            System.out.println("size of sequence: " + sequence.size());
                 for (int i = 1; i < sequence.size(); i++) {
                     int x = (int) sequence.get(i - 1);
                     int y = (int) sequence.get(i);
@@ -56,7 +57,7 @@ public class LongestSubstringWithoutRepeating {
 
                     String resString = s.substring(x, y);
                     result.add(resString);
-                    System.out.println(resString);
+                    System.out.println("itteration cycle " + i/2 + " String: " + resString.toString());
 
                     int length = resString.length();
                     if (res < length)
@@ -66,7 +67,7 @@ public class LongestSubstringWithoutRepeating {
             }
 
         System.out.println("answer: " + res);
-        String test = "ab";
+        String test = "aab";
         System.out.println("correct answer: " + test.length());
     }
 }
