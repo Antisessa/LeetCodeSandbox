@@ -7,25 +7,36 @@ public class ValidAnagram {
         String s = "anagram";
         String t = "nagaram";
 
+        boolean result = false;
+
         char[] sChar = s.toCharArray();
         char[] tChar = t.toCharArray();
 
-        ArrayList array1 = new ArrayList();
-        ArrayList array2 = new ArrayList();
+        if (sChar.length != tChar.length) {
 
-        for (char c: sChar) {
-            array1.add(c);
-        }
-        for (char c: tChar) {
-            array2.add(c);
-        }
+        } else {
+            ArrayList array1 = new ArrayList();
+            ArrayList array2 = new ArrayList();
 
-        for (int i = 0; i < array1.size(); i++) {
-            if(array1.contains(array2.get(i))) {
-                array1.
+            for (char c : sChar) {
+                array1.add(c);
+            }
+            for (char c : tChar) {
+                array2.add(c);
             }
 
-        }
+            int size = array1.size();
+            for (int i = 0; i < size; i++) {
+                if (array1.contains(array2.get(0))) {
+                    array1.remove(array2.get(0));
+                    array2.remove(0);
+                }
+            }
 
+            if (array1.size() == 0 && array2.size() == 0) {
+                result = true;
+            }
+            System.out.println(result);
+        }
     }
 }
