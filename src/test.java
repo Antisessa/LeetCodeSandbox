@@ -1,26 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class test {
     public static void main(String[] args) {
-        int[] nums = {2,3,1,2,4,3};
-        int target = 7;
+        List<Integer> list = new ArrayList<>();
 
-        int ans = nums.length+1, j = 0, sum = 0;
+        for (int i = 0; i < 10; i++) {
+            list.add(i + 1);
+        };
+//
+//        System.out.println("Original List: " + list);
+//
+//        List<Integer> listMap = list.stream().map(a -> a * 2).toList();
+//
+//        System.out.println("List after Map: " + listMap);
+//
+//        List<Integer> listFilter = list.stream().filter(a -> a % 4 == 0).toList();
+//
+//        System.out.println("List after Filter: " + listFilter);
 
-        for(int i=0; i < nums.length; i++) {
-            sum += nums[i];
+        list = list.stream().filter(a -> a % 2 != 0).map(a -> a * 2).collect(Collectors.toList());
+        System.out.println(list);
 
-            if(sum>=target){
-                while(sum>=target) {
-                    sum-=nums[j];
-                    j++;
-                }
-                ans = Math.min (ans, i-j+2);
-            }
-
-        }
-
-        if (ans == nums.length + 1)
-            ans = 0;
-
-        System.out.println(ans);
     }
 }
